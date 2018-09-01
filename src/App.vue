@@ -129,7 +129,7 @@
   <!-- 弹出的那个模态框 -->
   <Modal v-model="isShow" width="360">
       <p slot="header" style="color:#f60;text-align:center">
-        <Icon type="ios-information-circle"></Icon>
+        <Icon type="ios-information-circle">X</Icon>
         <span>你真的要离开?</span>
       </p>
       <div style="text-align:center">
@@ -172,7 +172,7 @@ export default {
       //登出调用接口发请求
       this.$axios.get("site/account/logout").then(response => {
         console.log(response);
-        console.log(this);
+        
         if(response.data.status==0){
             //登出成功 修改状态
             this.$store.commit("changeLoginStatus",false);

@@ -108,6 +108,9 @@
                               <button class="button">继续购物</button>
                             </router-link>
                             <button class="submit" @click="checkAndSubmit">立即结算</button>
+                            <!-- <router-link to="/order">
+                             <button class="submit" @click="checkAndSubmit">立即结算</button>
+                              </router-link> -->
                         </div>
                     </div>
                     <!--购物车底部-->
@@ -205,33 +208,35 @@ export default {
         this.$message.error("哥们，你好歹买点东西啊！");
         return;
       }
-       //在上面改用导航守卫去实现
-      let ids="";
-      this.message.forEach(v=>{
-          if(v.selected==true){
-              ids+=v.id;
-              ids+=','
-          }
-      })
+      //在上面改用导航守卫去实现
+      let ids = "";
+      this.message.forEach(v => {
+        if (v.selected == true) {
+          ids += v.id;
+          ids += ",";
+        }
+      });
       //去掉最后一个逗号
-      ids=ids.slice(0,-1);
+      ids = ids.slice(0, -1);
+      
       this.$router.push(`/order/${ids}`);
+     
 
-    /******************************/  
+      /******************************/
 
-       // 弹框提示 loading框
-    //    this.loading=true;
-    //   //判断是否登录
-    //   this.$axios.get("site/account/islogin").then(response => {
-    //     console.log(response);
-    //     if (response.data.code == "nologin") {
-    //       //没有登录去登录页
-    //       this.$router.push("/login");
-    //     } else {
-    //       //有登录去结算页
-    //       this.$router.push("/order");
-    //     }
-    //   });
+      // 弹框提示 loading框
+      //    this.loading=true;
+      //   //判断是否登录
+      //   this.$axios.get("site/account/islogin").then(response => {
+      //     console.log(response);
+      //     if (response.data.code == "nologin") {
+      //       //没有登录去登录页
+      //       this.$router.push("/login");
+      //     } else {
+      //       //有登录去结算页
+      //       this.$router.push("/order");
+      //     }
+      //   });
     }
   }
 };

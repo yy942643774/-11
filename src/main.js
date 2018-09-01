@@ -37,7 +37,10 @@ Vue.use(VueRouter);
 // 全局导入axios
 import axios from 'axios';
 // 配置全局基地址
+// 使用axios发送请求让ajax请求头部携带cookie
+axios.defaults.withCredentials=true;
 axios.defaults.baseURL = 'http://47.106.148.205:8899';
+
 // 增加到Vue的原型中
 Vue.prototype.$axios = axios;
 
